@@ -1,0 +1,36 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  devtools: { enabled: true },
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
+    '@vueuse/nuxt',
+    '@nuxtjs/google-fonts'
+  ],
+  css: ['~/assets/css/main.css'],
+  googleFonts: {
+    families: {
+      Inter: [400, 500, 600, 700],
+      'Plus Jakarta Sans': [400, 500, 600, 700]
+    }
+  },
+  runtimeConfig: {
+    public: {
+      wpApiUrl: process.env.WP_API_URL || 'https://your-wordpress-site.com/wp-json/wp/v2',
+      siteUrl: process.env.SITE_URL || 'http://localhost:3000'
+    }
+  },
+  app: {
+    head: {
+      title: 'Affiliate Links Hub',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: 'Discover the best affiliate products and deals' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
+    }
+  }
+})
